@@ -70,13 +70,13 @@ async function validateAuth(
 			}
 		}
 	}
-	if (coa) nickname += ` ${coa.emoji}`;
+	//if (coa) nickname += ` ${coa.emoji}`;
 
 	try {
 		await member.setNickname(nickname);
 		if (bocal) await member.roles.add(auth.roles.Bocal);
 		if (stud || bocal) await member.roles.add(auth.roles.Stud);
-		if (coa) await member.roles.add(coa.role);
+		//if (coa) await member.roles.add(coa.role);
 		console.log(`${user.login} is set up`);
 	} catch (err) {
 		console.error(err);
