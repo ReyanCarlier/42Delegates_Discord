@@ -1,0 +1,29 @@
+{
+	"content":"Bienvenue !",
+	"profile":
+	{
+		"username":"42Delegates",
+		"avatarUrl":"https://cdn.discordapp.com/attachments/609372006827294723/1084946463269867520/logo_simple.png"
+	},
+	"flags":
+	{
+		"disableEmbeds":false,
+		"disableMentions":false
+	},
+	"embeds":
+	[
+		{
+			"id":1678827661985,
+			"body":
+			{
+				"title":"Authentification",
+				"description":"Tu peux utiliser le bouton dans <#1009869588089016502> pour prouver que tu es de 42 et débloquer tout le Discord !",
+				"color":"#ff7d4f"
+			},
+			"footer":
+			{
+				"content":""
+			}
+		}
+	]
+}
