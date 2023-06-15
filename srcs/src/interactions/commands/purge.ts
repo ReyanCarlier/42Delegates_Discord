@@ -27,11 +27,10 @@ class Purge {
             for(const user of students?.members) {
                 const name = user[1].nickname || user[1].user.username;
                 const login = name.match(/ \((.*)\)/);
-                const bde = user[1].roles.cache.find((role) => role.id === roles.bde) || user[1].roles.cache.find((role) => role.id === auth.roles.Bocal);
                 if(login && login.length > 0)
                 {           
                     const user42 = await client42.users.get(login[1]);
-                    if((!user42 && bde) || user[1].user.bot)
+                    if((!user42) || user[1].user.bot)
                     {
                         continue;
                     }
@@ -42,7 +41,7 @@ class Purge {
                         continue;
                     }
                     const cursus = user42.cursus_users.find((cursus) => cursus.cursus_id == 21);
-                    if((!cursus && bde) || user42.cursus_users.find((cursus) => cursus.cursus_id == 1))
+                    if((!cursus) || user42.cursus_users.find((cursus) => cursus.cursus_id == 1))
                     {
                         continue;
                     }
@@ -54,7 +53,7 @@ class Purge {
                     }
                     const today = new Date();
                     const end = new Date(cursus.blackholed_at);
-                    if((today > end && cursus.blackholed_at != null) && !bde)
+                    if((today > end && cursus.blackholed_at != null))
                     {
                         await user[1].roles.remove(auth.roles.Stud);
                         remove_students++;
@@ -75,7 +74,7 @@ class Purge {
                         if(!user[1].roles.cache.find((role) => role.id === coa.role))
                             await user[1].roles.add(coa.role);
                         let theoric_name = `${user42.usual_first_name || user42.first_name} (${user42.login}) ${coa.emoji}`;
-                        if(name != theoric_name && !bde)
+                        if(name != theoric_name)
                         {
                             await user[1].setNickname(theoric_name);
                         }
@@ -83,12 +82,9 @@ class Purge {
                 }
                 else
                 {
-                    if(!bde)
-                    {
-                        await user[1].roles.remove(auth.roles.Stud);
-                        remove_students++;
-                        continue;
-                    }
+					await user[1].roles.remove(auth.roles.Stud);
+                    remove_students++;
+                    continue;
                 }
             }
         }
