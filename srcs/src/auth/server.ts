@@ -106,6 +106,12 @@ export function startApp(client: Client) {
 			);
 	});
 
+	app.get("/discord", function (req: any, res: any) {
+		// Redirect to an URL:
+		res.redirect("https://discord.gg/RPYzx6Kc67");
+	});
+
+
 	app.get("/42result", function (req: any, user_res: any) {
 		if (req.query.error || !req.query.code || !req.query.user_code) {
 			console.error("Error occured during auth");
