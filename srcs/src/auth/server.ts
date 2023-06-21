@@ -108,7 +108,7 @@ export function startApp(client: Client) {
 
 	app.get("/discord", function (req: any, res: any) {
 		// Redirect to an URL:
-		res.redirect("https://discord.gg/RPYzx6Kc67");
+		res.redirect("https://discord.gg/EdfCY2YtUA");
 	});
 
 
