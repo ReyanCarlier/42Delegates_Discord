@@ -111,6 +111,11 @@ export function startApp(client: Client) {
 		res.redirect("https://discord.gg/EdfCY2YtUA");
 	});
 
+	app.get("/petition", function (req: any, res: any) {
+		// Redirect to an URL:
+		res.redirect("https://chng.it/JJh26PnKQg");
+	});
+
 
 	app.get("/42result", function (req: any, user_res: any) {
 		if (req.query.error || !req.query.code || !req.query.user_code) {
