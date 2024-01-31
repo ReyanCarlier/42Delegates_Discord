@@ -4,6 +4,6 @@
 	"role_id": "1118808022114902036",
 	"auth_server": {
 		"port": 3000,
-		"self_uri": "auth.42delegates.fr"
+		"self_uri": "https://auth.42delegates.fr"
 	}
 }
