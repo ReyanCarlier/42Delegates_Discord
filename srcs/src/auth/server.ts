@@ -5,11 +5,9 @@ require("dotenv").config();
 import express from "express";
 import axios from "axios";
 import http from "http";
-import url from "url";
 import { readDB } from "./auth_manager";
-import { guild_id, auth, roles } from "../config.json";
+import { guild_id, role_id, auth_server} from "../config.json";
 import { IUser } from "42.js/dist/structures/user";
-import { Client as Client42 } from "42.js";
 
 async function getUserInformations(
 	token: string,
@@ -48,35 +46,8 @@ async function validateAuth(
 	const guild = await client.guilds.fetch(guild_id);
 	const member = await guild.members.fetch(discordUserId);
 
-	const bocal = user["staff?"];
-	const stud = user.achievements.find((a: any) => a.id == 1);
-
-	const client42 = new Client42(
-		<string>process.env.DISCORD_BOT_42_API_CLIENT_ID,
-		<string>process.env.DISCORD_BOT_42_API_CLIENT_SECRET
-	);
-	const coalitions: any[] = await client42.fetch(
-		"users/" + user.id + "/coalitions_users?"
-	);
-	let nickname = `${user.usual_first_name || user.first_name} (${
-		user.login
-	})`;
-	let coa = null;
-	for (const c of coalitions) {
-		for (const co of auth.coalitions) {
-			if (c.coalition_id == co.coa_id) {
-				coa = co;
-				break;
-			}
-		}
-	}
-	//if (coa) nickname += ` ${coa.emoji}`;
-
 	try {
-		await member.setNickname(nickname);
-		if (bocal) await member.roles.add(auth.roles.Bocal);
-		if (stud || bocal) await member.roles.add(auth.roles.Stud);
-		//if (coa) await member.roles.add(coa.role);
+		member.roles.add(role_id);
 		console.log(`${user.login} is set up`);
 	} catch (err) {
 		console.error(err);
@@ -97,25 +68,14 @@ export function startApp(client: Client) {
 		else
 			res.redirect(
 				"https://api.intra.42.fr/oauth/authorize?client_id=" +
-					process.env.DISCORD_BOT_42_API_CLIENT_ID +
-					"&redirect_uri=https%3A%2F%2F" +
-					process.env.DOMAIN +
-					"%2F42result?user_code=" +
+					process.env.API_CLIENT_ID +
+					"&redirect_uri=" +
+					encodeURI(auth_server.self_uri) +
+					"/42result?user_code=" +
 					user_code +
 					"&response_type=code"
 			);
 	});
-
-	app.get("/discord", function (req: any, res: any) {
-		// Redirect to an URL:
-		res.redirect("https://discord.gg/EdfCY2YtUA");
-	});
-
-	app.get("/petition", function (req: any, res: any) {
-		// Redirect to an URL:
-		res.redirect("https://chng.it/JJh26PnKQg");
-	});
-
 
 	app.get("/42result", function (req: any, user_res: any) {
 		if (req.query.error || !req.query.code || !req.query.user_code) {
@@ -136,12 +96,11 @@ export function startApp(client: Client) {
 					);
 			const params = {
 				grant_type: "authorization_code",
-				client_id: process.env.DISCORD_BOT_42_API_CLIENT_ID,
-				client_secret: process.env.DISCORD_BOT_42_API_CLIENT_SECRET,
+				client_id: process.env.API_CLIENT_ID,
+				client_secret: process.env.API_CLIENT_SECRET,
 				code: code,
 				redirect_uri:
-					"https://" +
-					process.env.DOMAIN +
+					auth_server.self_uri +
 					"/42result?user_code=" +
 					user_code,
 			};

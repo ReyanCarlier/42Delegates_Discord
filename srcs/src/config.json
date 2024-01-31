@@ -1,59 +1,9 @@
 {
 	"guild_id": "1101055343796162621",
-	"rules_channel_id": "1118808654729199677",
-	"roles": {
-		"délegué.e": "1118312194493394984"
-	},
-	"auth": {
-		"auth_channel": "1118807745903214672",
-		"roles": {
-			"Stud": "1118808022114902036",
-			"Bocal": "1118808208170029066"
-		},
-		"coalitions": [
-			{
-				"coa_id": 47,
-				"role": "1020758158882386000",
-				"emoji": "🟠"
-			},
-			{
-				"coa_id": 46,
-				"role": "1020758231498379285",
-				"emoji": "🟢"
-			},
-			{
-				"coa_id": 45,
-				"role": "1020758377774723093",
-				"emoji": "🔵"
-			},
-			{
-				"coa_id": 48,
-				"role": "1020758313295679609",
-				"emoji": "🟣"
-			}
-		]
-	},
-	"auto_reac": {
-		"disabled_channels": [
-			"961236728037933117",
-			"961969125779963914",
-			"961952497705054229"
-		],
-		"reactions": [
-			{
-				"emoji_type": "custom",
-				"emoji": "abeer",
-				"triggered_by_mention": false,
-				"keywords": [
-				]
-			},
-			{
-				"emoji_type": "custom",
-				"emoji": "alld",
-				"triggered_by_mention": true,
-				"keywords": [
-				]
-			}
-		]
+	"button_channel_id": "1118807745903214672",
+	"role_id": "1118808022114902036",
+	"auth_server": {
+		"port": 3000,
+		"self_uri": "auth.42delegates.fr"
 	}
 }

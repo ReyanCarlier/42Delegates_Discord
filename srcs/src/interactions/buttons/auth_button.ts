@@ -13,7 +13,6 @@ class AuthButton {
             embed
                 .setTitle("Authentifie toi !")
                 .setDescription(`Clique [ici](${url}) pour être redirigé sur la page d'authentification de 42.`)
-			console.log(`Sending auth reply.`)
             interaction.reply({ embeds: [embed], ephemeral: true });
         }
     }
