@@ -98,7 +98,7 @@ export function startApp(client: Client) {
 			res.redirect(
 				"https://api.intra.42.fr/oauth/authorize?client_id=" +
 					process.env.DISCORD_BOT_42_API_CLIENT_ID +
-					"&redirect_uri=https%3A%2F%2Fauth." +
+					"&redirect_uri=https%3A%2F%2F" +
 					process.env.DOMAIN +
 					"%2F42result?user_code=" +
 					user_code +
@@ -140,7 +140,7 @@ export function startApp(client: Client) {
 				client_secret: process.env.DISCORD_BOT_42_API_CLIENT_SECRET,
 				code: code,
 				redirect_uri:
-					"https://auth." +
+					"https://" +
 					process.env.DOMAIN +
 					"/42result?user_code=" +
 					user_code,
