@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:18
 
 RUN mkdir -p /usr/discord_bot
 WORKDIR /usr/discord_bot
