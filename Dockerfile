@@ -6,7 +6,7 @@ WORKDIR /usr/discord_bot
 COPY ./srcs ./
 
 RUN npm install --location=global npm@8
-RUN npm install typescript
+RUN npm install typescript@5
 RUN npm install
 
 RUN npm run build
