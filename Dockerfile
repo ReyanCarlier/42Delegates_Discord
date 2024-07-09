@@ -5,6 +5,7 @@ WORKDIR /usr/discord_bot
 
 COPY ./srcs ./
 
+RUN rm -rf node_modules package-lock.json
 RUN npm install --location=global npm@8
 RUN npm install typescript@5
 RUN npm install web-streams-polyfill
