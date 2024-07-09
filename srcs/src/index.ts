@@ -1,14 +1,12 @@
 import "dotenv/config";
 import "reflect-metadata";
+import 'web-streams-polyfill/ponyfill';
 import { GatewayIntentBits } from "discord.js";
 import { Client } from "discordx";
 import { guild_id, auth_server } from "./config.json";
 import { init as initInteractions } from "./interactions/interactions_manager";
 import { create_buttons } from "./create_buttons";
 import { startApp } from "./auth/server";
-require('web-streams-polyfill/ponyfill');
-
-
 const token = process.env.DISCORD_BOT_TOKEN;
 
 async function start() {
