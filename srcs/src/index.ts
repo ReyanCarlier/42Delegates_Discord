@@ -6,6 +6,8 @@ import { guild_id, auth_server } from "./config.json";
 import { init as initInteractions } from "./interactions/interactions_manager";
 import { create_buttons } from "./create_buttons";
 import { startApp } from "./auth/server";
+require('web-streams-polyfill/ponyfill');
+
 
 const token = process.env.DISCORD_BOT_TOKEN;
 
