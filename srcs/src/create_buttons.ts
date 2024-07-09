@@ -17,6 +17,7 @@ export async function create_buttons(client: Client) {
 		if (messages.size != 0) {
 			return;
 		}
+		
 		const embed = new EmbedBuilder()
 			.setTitle("Authentification")
 			.setDescription(
