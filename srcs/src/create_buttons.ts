@@ -4,15 +4,17 @@ import {
 	ButtonStyle,
 	EmbedBuilder,
 	MessageActionRowComponentBuilder,
+	TextChannel,
+	NewsChannel
 } from "discord.js";
 import { Client } from "discordx";
 import { button_channel_id } from "./config.json";
 
 export async function create_buttons(client: Client) {
 	const channel = await client.channels.fetch(button_channel_id);
-	if (channel && channel.isTextBased()) {
-		const message = await channel.messages.fetch({ limit: 1 });
-		if (message.size != 0) {
+	if (channel && (channel instanceof TextChannel || channel instanceof NewsChannel)) {
+		const messages = await channel.messages.fetch({ limit: 1 });
+		if (messages.size != 0) {
 			return;
 		}
 		const embed = new EmbedBuilder()
