@@ -12,7 +12,7 @@ import { button_channel_id } from "./config.json";
 
 export async function create_buttons(client: Client) {
 	const channel = await client.channels.fetch(button_channel_id);
-	if (channel && (channel instanceof TextChannel || channel instanceof NewsChannel)) {
+	if (channel) {
 		const messages = await channel.messages.fetch({ limit: 1 });
 		if (messages.size != 0) {
 			return;
